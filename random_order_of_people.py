@@ -18,5 +18,6 @@ people = ['Magdalena',
           'Dan'
          ]
 
+print(f'\nOriginal list (group sorted alphabetically by last name, I hope)\n{people}')
 random.shuffle(people)
-print(people)
+print(f'\nShuffled list\n{people}')
