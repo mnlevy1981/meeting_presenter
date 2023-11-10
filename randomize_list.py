@@ -8,6 +8,7 @@
 import os
 import random
 import time
+import sys
 
 #####################################
 
@@ -24,6 +25,9 @@ def _parse_args():
 
     parser.add_argument('-l', '--limit-first', action='store_true', dest='lim_first',
                         help='Flag to limit who goes first or second in new cycle')
+
+    parser.add_argument('--clean', action='store_true', dest='clean',
+                        help='Delete existing "previous_cycle.txt" file')
 
     return parser.parse_args()
 
@@ -47,6 +51,10 @@ if __name__ == '__main__':
     """
     # 1) Read command line arguments
     args = _parse_args()
+    if args.clean:
+        if os.path.isfile('previous_cycle.txt'):
+            os.remove('previous_cycle.txt')
+        sys.exit(0)
 
     # 2) Set up seeding for random number generator used to shuffle names
     NOW = time.time()
