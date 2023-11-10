@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # 2) Set up seeding for random number generator used to shuffle names
     NOW = time.time()
-    SEED = int(NOW) % 10000
+    SEED = int(1000*NOW) % 10000
     print(f'time.time() = {NOW} so seeding with {SEED}\n----')
     random.seed(SEED)
 
