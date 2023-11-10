@@ -19,8 +19,8 @@ def _parse_args():
     parser = argparse.ArgumentParser(description="Shuffle elements of a list",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('-c', '--command-line', action='store_true', dest='cmd_line',
-                        help='Flag to force user to enter list from command line')
+    parser.add_argument('-n', '--new-list', action='store_true', dest='new_list',
+                        help='Flag to force user to enter new list from command line')
 
     parser.add_argument('-l', '--limit-first', action='store_true', dest='lim_first',
                         help='Flag to limit who goes first or second in new cycle')
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     #    We store use_previous_cycle_file because it determines if there are restrictions
     #    to the order of the shuffling (e.g. last person can't subsequently go first)
     previous_cycle_file = 'previous_cycle.txt'
-    use_previous_cycle_file = os.path.isfile(previous_cycle_file) and not args.cmd_line
+    use_previous_cycle_file = os.path.isfile(previous_cycle_file) and not args.new_list
     if use_previous_cycle_file:
         previous_cycle = open(previous_cycle_file, "r")
         orig_people = previous_cycle.read().splitlines()
